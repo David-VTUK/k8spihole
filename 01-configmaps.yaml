@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pihole-adlists
+  namespace: default
+data:
+  adlists.list: |
+    https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+    https://mirror1.malwaredomains.com/files/justdomains
+    http://sysctl.org/cameleon/hosts
+    https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+    https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+    https://hosts-file.net/ad_servers.txt
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pihole-setupvars
+  namespace: default
+data:
+  setupVars.conf: |
+    QUERY_LOGGING=true
+    INSTALL_WEB_SERVER=true
+    INSTALL_WEB_INTERFACE=true
+    LIGHTTPD_ENABLED=true
+    IPV4_ADDRESS=0.0.0.0
+    IPV6_ADDRESS=
+    WEBPASSWORD=ccc53bb4d6534537b2b8dbb6a4972caccb68eeba15267c1f041cc6bb94db88e8
+    PIHOLE_INTERFACE=eth0
+    BLOCKING_ENABLED=true
+    DNSMASQ_LISTENING=single
+    PIHOLE_DNS_1=1.1.1.1
+    PIHOLE_DNS_2=1.0.0.1
+    DNS_FQDN_REQUIRED=true
+    DNS_BOGUS_PRIV=false
+    DNSSEC=false
+    CONDITIONAL_FORWARDING=false
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pihole-regex
+  namespace: default
+data:
+  regex.list: |
+    ^(.+[-_.])??adse?rv(er?|ice)?s?[0-9]*[-.]
+    ^(.+[-_.])??m?ad[sxv]?[0-9]*[-_.]
+    ^(.+[-_.])??telemetry[-.]
+    ^(.+[-_.])??xn--
+    ^adim(age|g)s?[0-9]*[-_.]
+    ^adtrack(er|ing)?[0-9]*[-.]
+    ^advert(s|is(ing|ements?))?[0-9]*[-_.]
+    ^aff(iliat(es?|ion))?[-.]
+    ^analytics?[-.]
+    ^banners?[-.]
+    ^beacons?[0-9]*[-.]
+    ^count(ers?)?[0-9]*[-.]
+    ^pixels?[-.]
+    ^stat(s|istics)?[0-9]*[-.]
+    ^track(ers?|ing)?[0-9]*[-.]
+    ^traff(ic)?[-.]
+    ^(.*)\.g00\.(.*)
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pihole-env
+  namespace: default
+data:
+  TZ: UTC
+  DNS1: 1.1.1.1 
+  DNS2: 1.0.0.1
