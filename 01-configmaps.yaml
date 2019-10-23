@@ -15,29 +15,6 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: pihole-setupvars
-  namespace: pihole-test
-data:
-  setupVars.conf: |
-    QUERY_LOGGING=true
-    INSTALL_WEB_SERVER=true
-    INSTALL_WEB_INTERFACE=true
-    LIGHTTPD_ENABLED=true
-    IPV4_ADDRESS=0.0.0.0
-    IPV6_ADDRESS=
-    PIHOLE_INTERFACE=eth0
-    BLOCKING_ENABLED=true
-    DNSMASQ_LISTENING=single
-    PIHOLE_DNS_1=1.1.1.1
-    PIHOLE_DNS_2=1.0.0.1
-    DNS_FQDN_REQUIRED=true
-    DNS_BOGUS_PRIV=false
-    DNSSEC=false
-    CONDITIONAL_FORWARDING=false
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
   name: pihole-regex
   namespace: pihole-test
 data:
