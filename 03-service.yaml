@@ -19,6 +19,7 @@ metadata:
   name: pihole-dns-service
   namespace: pihole-test
 spec:
+  externalTrafficPolicy: Local
   selector:
     app: pihole
   ports:
